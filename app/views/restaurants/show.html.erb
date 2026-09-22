@@ -1,0 +1,20 @@
+<%# #show.html.erb %>
+<div class="container m-3">
+  <h1><%= @restaurant.name %></h1>
+  <h4 class = "border-bottom pb-2 mb-3"><i>Category: <%= @restaurant.category %></i></h4>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+
+  <div id="reviews" class="border-top mt-3 pt-3 border-bottom mb-3 pb-3" >
+    <h5>Reviews</h5>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item">Rating: <%= review.rating %>/5. <%= review.content %></li>
+      <% end %>
+    </ul>
+
+    <%= link_to "+ Add a review", new_restaurant_review_path(@restaurant) %>
+  </div>
+
+  <%= link_to " Back to List", restaurants_path %>
+</div>
